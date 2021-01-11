@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tablet Home</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script src="firebaseinit.js"></script> 
+
+    <style>
+        body, html {
+          height: 100%
+        }
+        body,h1,h2,h3,h4,h5,h6 {
+            font-family: "Amatic SC", sans-serif;
+        }
+        .menu {
+            display: none;
+        }
+        .bgimg {
+            background-repeat: no-repeat;
+            background-size: cover;            
+            min-height: 90%;
+        }
+
+        #tnum{
+            float:right;
+        }
+
+
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+          position: relative;
+          background-color: #fefefe;
+          margin: auto;
+          padding: 0;
+          border: 1px solid #888;
+          width: 30%;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+          -webkit-animation-name: animatetop;
+          -webkit-animation-duration: 0.4s;
+          animation-name: animatetop;
+          animation-duration: 0.4s
+          font-size: 100px;
+
+        }
+
+        /* Add Animation */
+        @-webkit-keyframes animatetop {
+          from {top:-300px; opacity:0} 
+          to {top:0; opacity:1}
+        }
+
+        @keyframes animatetop {
+          from {top:-300px; opacity:0}
+          to {top:0; opacity:1}
+        }
+
+
+        .modal-header {
+          padding: 2px 16px;
+          background-color: #5cb85c;
+          color: white;
+
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+            font-size: 50px;
+        }
+
+        .modal-footer {
+          padding: 2px 16px;
+          background-color: #5cb85c;
+          color: white;
+        }
+
+        #error{
+          font-size : 30px;
+        }
+        #feedback{
+          display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top w3-hide-small">
+  <div class="w3-bar w3-xxlarge w3-red w3-opacity w3-hover-opacity-off" id="myNavbar">
+    <a href="#" class="w3-bar-item w3-button">HOME</a>
+    <a   id ="tnum" class="w3-bar-item w3-button"></a>
+  </div>
+</div>
+
+
+<!-- Header with image -->
+
+  <div class="bgimg w3-display-container w3-grayscale-min" id="home">
+
+    <div class="w3-display-middle w3-center">
+
+        <span class="w3-text-black w3-hide-small" style="font-size:100px"><br>Hello, and welcome to Tomatoz!<br><h2>Please go through our menu, we will be with you shortly.</h2>
+        </span>
+
+        
+
+        <p><a href="menu.html" ><button id="order"  class="w3-button w3-xxlarge w3-black" >View Menu & Place an Order</button></a>
+        </p>
+
+        <p align="center"><button  id="bill" class="w3-button w3-xxlarge w3-black" onclick="reqBill()" type="submit">Request for Bill</button>
+        </p>
+
+        <div class="w3-xxlarge w3-red w3-opacity" id="dp"></div>
+
+        <!-- <p><a href="menu.html" ><button  id="feedback" class="w3-button w3-xxlarge w3-black" >Feedback</button></a></p> -->
+
+        
+        <p>
+          <center><button   class="w3-button w3-xxlarge w3-black" onclick="Feedback()">
+            Feedback
+          </button></center>
+
+          <div id="feedback" >
+            <br>
+            <input type="text"  name="feedback" placeholder="Please enter feedback here!" style="height:100px; width:50%; border:1px solid black; font-size: 30px">
+            </input><br><br>
+            <button onclick="submitFeedback()" class="w3-red w3-xlarge w3-opacity w3-button">Submit feedback</button>
+            <br>
+          </div>
+        </p>
+
+
+        <p><a href="menu.html" ><button  id="help" class="w3-button w3-xxlarge w3-black" >Help</button></a></p>
+    </div>
+
+
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header w3-red w3-opacity">
+      <h2>Enter your table number</h2>
+    </div>
+    <div class="modal-body">
+      <center><p>
+        <input type="text" width="50%" id="tablenum" value="0" placeholder="number" >
+        <br><span id="error"></span><br>
+        <button class="w3-button w3-xlarge w3-black" onclick="enableBtn()">Confirm table number</button>
+
+      </p></center>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="bill.js"></script>
+<script>
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+document.body.onload = function() {
+  modal.style.display = "block";
+}
+//end of modal
+
+
+// Tabbed Menu
+function openMenu(evt, menuName) {
+    var i, x, tablinks;
+    x = document.getElementsByClassName("menu");
+    for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+    }
+    document.getElementById(menuName).style.display = "block";
+    evt.currentTarget.firstElementChild.className += " w3-red";
+}
+
+function Feedback() {
+  // alert("Thank you for submitting feedback!");
+  var feedback = document.getElementById("feedback");
+  feedback.style.display = "block";
+}
+function submitFeedback(){
+  alert("Thank you for submitting feedback!");
+  var feedback = document.getElementById("feedback");
+  feedback.style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

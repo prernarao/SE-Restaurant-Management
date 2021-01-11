@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Feedback</title>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script src="firebaseinit.js"></script>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+
+    <style type="text/css">
+    	body, html {height: 100%}
+        body,h1,h2,h3,h4,h5,h6 {
+        	font-family: "Amatic SC", sans-serif;
+        	font-size: 40px;
+        }
+
+    	table{
+			border: 2px solid;
+			border-collapse: collapse;
+			width: 100%;
+			font-size: 30px;
+
+		}
+		td, th {
+			border: 2px solid #dddddd;
+			text-align: center;
+			padding: 8px;
+			width: 20%;
+		}
+		.compBtn{
+			/* class name for all "Completed" buttons */
+
+		}
+		#btnLogout{
+			float: right;
+		}
+		.top{
+			font-weight: bold;
+		}
+        #feedbacks{
+            width:70%;
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top top w3-hide-small">
+    <div class="w3-bar w3-xxlarge w3-red w3-opacity " id="myNavbar">
+        <a href="manager.html" class="w3-bar-item w3-button">HOME</a>
+        <a href=""  id ="btnLogout" class="w3-bar-item w3-button">LOG OUT</a>
+            </div>
+        </div>
+
+
+<br>
+<br>
+<div>
+<center class="w3-xxslarge" id="hello"></center>
+</div>
+
+
+<center>
+<div align="center" id="feedbacks" class="w3-container">
+
+    <div style="border:2px solid black; margin:100px">
+        <p>Customer 1 (Table 5): Hello, we've been regular customers of Tomatoz, and we absolutely enjoyed the food today. Your chefs are amazing! We tried the dal makhani with rice today for the first time and it was so tasty! Thank you for having us. :)</p>
+    </div>
+    <div style="border:2px solid black; margin:100px">
+        <p>Customer 2 (Table 3): Our first visit to Tomatoz, and we are impressed. The food and the ambiance is very nice. We will recommend this to our friends and family for sure.</p>
+    </div>
+    <div style="border:2px solid black; margin:100px">
+        <p>Customer 3 (Table 4): The service here is just lightning speed! Such yummy food!</p>
+    </div>
+    <div style="border:2px solid black; margin:100px">
+        <p>Customer 4 (Table 1): 5 on 5 for food and ambiance. I would give it 6 stars if you could just add some live music. ;) </p>
+    </div>
+    <div style="border:2px solid black; margin:100px">
+        <p>Customer 5 (Table 6): Today my child dropped water on the table, and the staff was so helpful and efficient. They quickly moved us to another table and within minutes I received my food! Thank you Tomatoz, cant wait to come again. :) </p>
+    </div>
+</div>
+
+</center>
+
+<script type="text/javascript">
+
+
+	//Get elements
+    const btnLogout = document.getElementById('btnLogout');
+
+    //Sign out
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+        window.location.href = "index.html";    //redirect to login page
+    });
+
+    //Realtime listener
+    //Not really needed as admin is redirected to login page on signing out
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser){
+            console.log(firebaseUser);
+            // alert(firebaseUser.email);
+            var txt = document.getElementById("hello");
+            var str = "Hello, ";
+
+            var email = firebaseUser.email;
+            email = email.split("@")[0];
+            email = email.slice(3);
+            str = str + email + ". Here is the feedback from customers";
+
+            txt.innerHTML = str;
+
+        }else{
+            console.log('Not logged in');
+            window.location.href = "index.html";            //redirect to login page
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

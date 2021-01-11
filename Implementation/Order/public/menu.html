@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Something!</title>
+    <meta chars et="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script src="firebaseinit.js"></script>
+
+
+    <style>
+        body, html {
+            height: 100%;
+            /*background-color: #d1e6e4;*/
+        }
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+        .menu {display: none}
+        .bgimg {
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 90%;
+
+        }
+        .top{
+            font-weight: bold;
+            font-color : white;
+            font-size: 200px;
+        }
+        .quant{
+            float: right;
+            border-color: #49d3c7;
+        }
+        .quant:disabled{
+            background-color: #bbdcd9;
+        }
+        .menubg{
+ 
+            background-color: #b7deda;
+        }
+        #tnum1{
+            float: right;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top top w3-hide-small">
+    <div class="w3-bar w3-xxlarge w3-black  w3-hover-opacity-off" id="myNavbar">
+    <a href="index.html" class="w3-bar-item w3-button">HOME</a>
+
+    <a id ="tnum1" class="w3-bar-item w3-button"></a>
+    </div>
+</div>
+
+
+<!-- Menu Container -->
+<div class="w3-container menubg w3-padding-64 w3-xxlarge" id="menu">
+    <div class="w3-content">
+        <br>
+    <div class="w3-col w3-xxlarge menubg w3-padding-large">MENU</div>
+    <br><br>
+
+
+    <div id="Menu">
+        <div class="w3-container w3-padding-32 w3-white">
+        <form>
+            <h2>
+                <input type="checkbox" id="f1" name="pizza" value="Margherita Pizza" onclick="enPizza(this.id)">&nbsp;&nbsp;
+                    <b>Margherita Pizza</b>
+                    <span id="p1" class="w3-right w3-tag w3-dark-grey w3-round">Rs 400</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil
+                <input disabled id="q1" type="number" class="quant"  align="right"   step="1" min="1" max="10"></p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f2" value="Alfredo Pasta" onclick="enPasta(this.id)">&nbsp;&nbsp;
+                    <b>Alfredo Pasta</b>
+                    <span id="p2" class="w3-right w3-tag w3-dark-grey w3-round">Rs 350</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">Grilled chicken and our signature alfredo sauce over fettuccine pasta
+                <input disabled id="q2" type="number"  class="quant"  align="right"   step="1" min="1" max="10"></p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f3" value="Dal Makhani" onclick="enDal(this.id)">&nbsp;&nbsp;
+                    <b>Dal Makhani</b>
+                    <span id="p3" class="w3-right w3-tag w3-dark-grey w3-round">Rs 300</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">Creamed lentils,  garlic and a rich blend of herbs and spices
+                <input disabled id="q3" type="number" class="quant"  align="right"   step="1" min="1" max="10"></p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f4" value="Steamed Rice" onclick="enRice(this.id)">&nbsp;&nbsp;
+                    <b>Steamed Rice</b>
+                    <span id="p4" class="w3-right w3-tag w3-dark-grey w3-round">Rs 200</span>
+
+                </input>
+            </h2>
+            <p class="w3-text-grey">Long grained Indian rice
+                <input disabled id="q4" type="number" class="quant"  align="right"   step="1" min="1" max="10"></p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f5" value="Pastry" onclick="enPastry(this.id)">&nbsp;&nbsp;
+                    <b>Pastry</b>
+                    <span class="w3-tag w3-grey w3-round">Popular</span>
+                    <span id="p5" class="w3-right w3-tag w3-dark-grey w3-round">Rs 200</span>
+
+                </input>
+            </h2>
+            <p class="w3-text-grey">Hand-made, freshly baked sweet chocolate cake
+            <input id="q5" type="number" class="quant" disabled align="right"  step="1" min="1" max="10"></p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f6" value="Ice Cream" onclick="enIceCream(this.id)">&nbsp;&nbsp;
+                    <b>Ice Cream</b>
+                    <span id="p6" class="w3-right w3-tag w3-dark-grey w3-round">Rs 150</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">Vanilla ice cream
+                <input id="q6" type="number" class="quant" disabled align="right"  step="1" min="1" max="10">
+            </p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f7" value="Apple Pie" onclick="enApplePie(this.id)">&nbsp;&nbsp;
+                    <b>Apple Pie</b>
+                    <span id="p7" class="w3-right w3-tag w3-dark-grey w3-round">Rs 300</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">A flaky, buttery crust and a tender, lightly-spiced apple filling
+                <input id="q7" type="number" class="quant" disabled align="right"   step="1" min="1" max="10">
+            </p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f8" value="Fresh Lime Soda" onclick="enSoda(this.id)">&nbsp;&nbsp;
+                    <b>Fresh Lime Soda</b>
+                    <span class="w3-tag w3-grey w3-round">Seasonal</span>
+                    <span id="p8" class="w3-right w3-tag w3-dark-grey w3-round">Rs 100</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">Fresh lime squeezed into soda, garnished with mint leaves
+                <input id="q8" type="number" class="quant" disabled align="right"   step="1" min="1" max="10">
+            </p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f9" value="Aerated Drinks" onclick="enDrink(this.id)">&nbsp;&nbsp;
+                    <b>Aerated Drinks</b>
+                    <span id="p9" class="w3-right w3-tag w3-dark-grey w3-round">Rs 70</span>
+                </input>
+            </h2>
+            <p class="w3-text-grey">Choice of Cola, Sprite and Fanta
+                <input id="q9" type="number" class="quant" disabled align="right"   step="1" min="1" max="10">
+            </p>
+            <hr>
+
+
+            <h2>
+                <input type="checkbox" id="f10" value="Mineral Water" onclick="enWater(this.id)">&nbsp;&nbsp;
+                    <b>Mineral Water</b>
+                    <span id="p10"class="w3-right w3-tag w3-dark-grey w3-round">Rs 80</span>
+
+                </input>
+            </h2>
+            <p class="w3-text-grey">Bottled Water
+                <input id="q10" type="number" class="quant" disabled align="right"    step="1" min="1" max="10">
+            </p>
+
+      </div>
+  </form>
+      <div>
+        <p align="center"><button class="w3-button w3-dark-grey" onclick="placeOrder()" >PLACE ORDER</button></p>
+      </div>
+  </div>
+    <br>
+
+  </div>
+</div>
+
+<script src="cust.js"></script>
+
+<script>
+
+    function enPizza(e){
+        var x = document.getElementById(e);
+        if (x.checked == true){
+            document.getElementById("q1").disabled = false;
+        }
+        else{
+            document.getElementById("q1").disabled = true;
+        }
+    }
+
+    function enPasta(e){
+
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q2").disabled = false;}
+        else{
+            document.getElementById("q2").disabled = true;
+        }
+    }
+
+    function enDal(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q3").disabled = false;}
+        else{
+            document.getElementById("q3").disabled = true;
+        }
+    }
+
+    function enRice(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q4").disabled = false;}
+        else{
+            document.getElementById("q4").disabled = true;
+        }
+    }
+
+    function enPastry(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q5").disabled = false;}
+        else{
+            document.getElementById("q5").disabled = true;
+        }
+    }
+
+    function enIceCream(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q6").disabled = false;}
+        else{
+            document.getElementById("q6").disabled = true;
+        }
+    }
+
+    function enApplePie(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q7").disabled = false;}
+        else{
+            document.getElementById("q7").disabled = true;
+        }
+    }
+
+    function enSoda(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q8").disabled = false;}
+        else{
+            document.getElementById("q8").disabled = true;
+        }
+    }
+
+    function enDrink(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q9").disabled = false;}
+        else{
+            document.getElementById("q9").disabled = true;
+        }
+    }
+
+    function enWater(e){
+        if (document.getElementById(e).checked == true){
+            document.getElementById("q10").disabled = false;}
+        else{
+            document.getElementById("q10").disabled = true;
+        }
+    }
+
+</script>
+
+</body>
+</html>

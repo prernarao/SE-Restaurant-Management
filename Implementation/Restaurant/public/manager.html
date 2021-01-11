@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script src="firebaseinit.js"></script> 
+
+    <style>
+        body, html {height: 100%}
+        body,h1,h2,h3,h4,h5,h6 {font-family: "Amatic SC", sans-serif}
+        .menu {display: none}
+        .bgimg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* background-image: url("/w3images/pizza.jpg"); */
+        min-height: 90%;
+        }
+        #btnLogout{
+            float : right;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="top ">
+    <div class="w3-bar w3-xxlarge w3-red w3-opacity " id="myNavbar">
+        <a href=""  id ="btnLogout" class="w3-bar-item w3-button">LOG OUT</a>
+    </div>
+</div>
+
+
+<!-- Header with image -->
+<div class="bgimg w3-display-container w3-grayscale-min" id="home">
+  
+  <div class="w3-display-bottomleft w3-padding">
+  </div>
+  <div class="w3-display-middle w3-center">
+    <span class="w3-text-black w3-hide-small" style="font-size:100px">Hello Manager, <span id="hello"></span><br></span>
+
+    <p><a href="mgView.html" class="w3-button w3-xxlarge w3-black">View Order</a></p>
+
+    <p><a href="feedback.html" class="w3-button w3-xxlarge w3-black">View Feedback</a></p>
+
+    <p><a href="#" onclick="changeMenu()" class="w3-button w3-xxlarge w3-black">Change Menu</a></p>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+    
+    //Get elements
+    const btnLogout = document.getElementById('btnLogout');
+
+    //Sign out
+    btnLogout.addEventListener('click', e => {
+        firebase.auth().signOut();
+        window.location.href = "index.html";    //redirect to login page
+    });
+
+    //Realtime listener
+    //Not really needed as admin is redirected to login page on signing out
+    firebase.auth().onAuthStateChanged(firebaseUser => {
+        if(firebaseUser){
+            console.log(firebaseUser);
+            // alert(firebaseUser.email);
+            var txt = document.getElementById("hello");
+            // var str = "Hello, ";
+
+            var email = firebaseUser.email;
+            email = email.split("@")[0];
+            email = email.slice(3);
+            // str = str + email + ".";
+
+            txt.innerHTML = email;
+
+        }else{
+            console.log('Not logged in');
+            window.location.href = "index.html";            //redirect to login page
+        }
+    });
+
+
+
+    function changeMenu(){
+        alert("Work in progress!!!");
+    }
+
+</script>
+
+
+</body>
+</html>

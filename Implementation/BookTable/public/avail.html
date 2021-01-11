@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Check Availability</title>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script src="firebaseinit.js"></script> 
+
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+
+    <style type="text/css">
+    	h1, h2, h3, h4, h5, h6, div {
+		  font-family: "Amatic SC";
+		}
+		#btnLogout{
+			float : right;
+		}
+		.box{
+			width:230px;
+			height:230px;		
+			opacity: 0.25;				
+		}
+		th, tr {
+			padding: 30px;
+			text-align: center;
+			font-size: 25px;		
+		}		
+
+		img{
+			width:180px;
+			height:180px;
+		}
+    </style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-xxlarge w3-red w3-opacity " id="myNavbar">
+        <a href="index.html" class="w3-bar-item w3-button">&nbsp; <-- &nbsp; GO BACK TO HOME</a>       
+    </div>
+</div>
+
+
+<br>
+<br>
+<br>
+
+
+<center><h2 class="w3-xxlarge">Available Tables</h2></center>
+
+
+<div >
+	<table id="table" align="center">
+		  <tr>
+		    <th>
+		    	<div id = "1" class="box">
+		    		<img id="i1" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 1 <br> 
+		    		<span id="s1"> </span>
+		    	</div>
+			</th>
+
+		    <th>
+		    	<div id = "2" class="box">
+		    		<img id="i2" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 2 <br> 
+		    		<span id="s2"> </span>
+		    	</div>
+			</th>
+
+		    <th>
+		    	<div id = "3" class="box">
+		    		<img id="i3" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 3 <br> 
+		    		<span id="s3"> </span>
+		    	</div>
+			</th>
+
+		    <th>
+		    	<div id = "4" class="box">
+		    		<img id="i4" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 4 <br> 
+		    		<span id="s4"> </span>
+		    	</div>
+			</th>
+
+		  </tr>
+
+		  <tr>
+		    <th>
+		    	<div id = "5" class="box">
+		    		<img id="i5" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 5 <br> 
+		    		<span id="s5"> </span>
+		    	</div>
+			</th>
+
+		    <th>
+		    	<div id = "6" class="box">
+		    		<img id="i6" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 6 <br> 
+		    		<span id="s6"> </span>
+		    	</div>
+			</th>
+
+		    <th>
+		    	<div id = "7" class="box">
+		    		<img id="i7" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 7 <br> 
+		    		<span id="s7"> </span>
+		    	</div>
+			</th>
+
+		    <th>
+		    	<div id = "8" class="box">
+		    		<img id="i8" src="Images/table4.jpeg"> &nbsp;&nbsp;
+		    		Table : 8 <br> 
+		    		<span id="s8"> </span>
+		    	</div>
+			</th>
+		  </tr>				  
+	</table>
+</div>
+
+
+<script src="displayTable.js"></script>
+
+</body>
+</html>

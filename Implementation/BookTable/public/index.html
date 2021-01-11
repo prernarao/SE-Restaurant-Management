@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tomatoz Home</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+		<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+		<script src="firebaseinit.js"></script>
+
+
+		<style>
+		/* Media Queries: Tablet Landscape */
+		@media screen and (max-width: 1060px) {
+				#primary { width:67%; }
+				#secondary { width:30%; margin-left:3%;}
+		}
+
+		/* Media Queries: Tabled Portrait */
+		@media screen and (max-width: 768px) {
+				#primary { width:100%; }
+				#secondary { width:100%; margin:0; border:none; }
+		}
+		h1, h2, h3, h4, h5, h6, div {
+		  font-family: "Amatic SC";
+		}
+		body{
+			word-spacing: 5px;
+		}
+
+		</style>
+
+	</head>
+
+	<body>
+		<!-- Navbar (sit on top) -->
+		<header class="w3-top">			
+		  <div class="w3-bar w3-xlarge w3-red w3-opacity w3-padding w3-card" style="letter-spacing:4px;">
+		    <a href="#home" class="w3-bar-item w3-button"><b>TOMATOZ</b></a>
+		   
+		    <div class="w3-right">
+		      		<a href="#about" class="w3-bar-item w3-button"><b>About *</b></a>
+					<a href="#menu" class="w3-bar-item w3-button"><b>Menu *</b></a>
+					
+		      		<a href="#contact" class="w3-bar-item w3-button"><b>Book Table *</b></a>
+					<a href="#cancel" class="w3-bar-item w3-button"><b>Cancel Booking *</b></a>
+
+					<a href="avail.html" class="w3-bar-item w3-button"><b>Available Tables *</b></a>
+		    </div>
+		  </div>
+		</header>
+
+		<!-- Header -->
+		<div class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+			<br><br><br>
+		  	<div class=" w3-padding-large w3-opacity">
+		    	<center><h1 class="w3-xxxlarge w3-white"><b>Welcome to Tomatoz!</b></h1></center>
+		  	</div>
+		</div>
+
+		<!-- Page content -->
+		<div class="w3-content" style="max-width:1100px">
+
+		  <!-- About Section -->
+		  <div class="w3-row w3-padding-64" id="about">
+		    <div class="w3-col m6 w3-padding-large w3-hide-small">
+		     <img src="Images/hb.jpg" class="w3-round w3-image w3-opacity-min"  alt="Table Setting" width="530" height="500">
+		   	</div>
+
+		    <div class="w3-col m6 w3-padding-large">
+		      <h1 class="w3-center" style="font-size:40px"><b>About TOMATOZ</b></h1><br>
+		      <h5 class="w3-center" style="font-size:30px"><b>Tradition since 1889</b></h5>
+		      <p class="w3-large"><b style="font-size:25px">Tomatoz was founded out of the passion to provide world class food from near and far. We only use <span class="w3-tag w3-light-grey">seasonal</span> ingredients.</p>
+		      <p class="w3-large w3-text-grey w3-hide-medium">Under the best management is a casual-dining multi-cuisine restaurant in  Bagalore. Tomatoz offers an intimate yet vibrant atmosphere. Fusing the best of old and new world cuisine, Tomatoz offers an eclectic menu from gourmet pizzas to multi-course dinners. Tomatoz has been a favourite of locals and visitors alike. Tomatoz strives to offer the same relentless signature perseverance for quality and excellence in all that we do.</b></p>
+		    </div>
+		</div>
+
+		 <hr style="border: 2px solid gray">
+
+		<!-- Menu Section -->
+		<div class="w3-row w3-padding-64" style="font-size:25px" id="menu">
+		    <div class="w3-col l6 w3-padding-large">
+		      <h2 class="w3-center w3-xxlarge"><b>Our Menu</h2></b>
+		      
+		      <h2><b>Margherita Pizza</b></h2>
+
+		      <span class="w3-text-grey">Fresh tomatoes, fresh mozzarella, fresh basil</span>
+		      <br>
+		      <br>
+
+		      <h2><b>Alfredo Pizza</b></h2>
+		      <span class="w3-text-grey">Sliced grilled chicken and our signature alfredo sauce over fettuccine pasta</span>
+		      <br>
+		      <br>
+
+		      <h2><b>Dal Makhani</b></h2>
+		      <span class="w3-text-grey">Creamed lentils, fresh ginger, garlic and a rich blend of herbs and spices</span>
+		      <br>
+		      <br>
+
+		      <h2><b>Apple Pie</b></h2>
+		      <span class="w3-text-grey">Hand-made, freshly baked sweet chocolate cake</span>
+
+		    </div>
+
+		    <div class="w3-col l6 w3-padding-large">
+		      <img src="Images/menu.jpg" class="w3-round w3-image w3-opacity-min" alt="Menu" style="width:100%; height:200%">
+		    </div>
+		</div>
+
+
+
+	
+	  <hr style="border: 2px solid gray">
+
+	  <!-- Table Reservation Section -->
+	<div class="w3-container w3-padding-64" id="contact">
+		<h1 style="font-size:40px">
+			<b>Book A Table</b>
+		</h1>
+		 <br><br>
+
+	    <span style="font-size:30px">
+	    Allow us to provide you with top notch service by booking your table in advance.
+		</span>
+
+	    <span style="font-size:30px">
+	    	You can also contact us by phone 886578943 or email tomatoz@tomatoz.com, or you can enter your details here:
+	    </span>
+	    <br><br>
+
+	    <form id="reserveForm">
+	    	<span>
+	    		<input id="name" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Enter your name" required name="Name">
+	    	</span>
+	    	<br>
+
+	    	<span>
+	    		<input id="phone" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Enter your phone number" required>
+	    	</span>
+	    	</br>
+	    	</br>
+
+	    	<span style="font-size:30px">Select table size: &nbsp;&nbsp;
+	    		<span>
+	    			<input id="size" type="radio" style="font-size:30px" name ="size" value="4"checked required>
+	    			4
+	    		</span> &nbsp; &nbsp;
+
+	      		<span>
+	      			<input id = "size" type="radio" style="font-size:30px" name ="size" value="6">
+	      			6
+	      		</span>
+	      	</span>
+
+	      	</br>
+	      	</br>
+	      	</br>
+
+
+		    <span style="font-size:30px">Enter time of reservation: </span> &nbsp;
+		    <input id="time" type="time" style="font-size:30px" required name="time">
+		    
+
+		    </br>
+			</br>
+
+		    <span>
+		    	<input id ="msg" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Message \ Special requirements" name="Message">
+		    </span>
+
+		    </br>
+	      
+
+		    <span>
+		    	<input type="button" id="uploadbtn" onclick="book()" class="w3-button w3-light-grey w3-section" style="font-size:30px" value="BOOK TABLE" >
+		   	</span>
+
+	    </form>
+	  </div>
+
+
+	  <hr style="border: 2px solid gray">
+
+
+		<!--cancel booking-->
+		<div class="w3-container w3-padding-64" id="cancel">
+			<h1 style="font-size:40px">
+				<b>In case you want to cancel your booking.</b>
+			</h1>
+			
+			<br>
+			
+			<span>
+	    		<input id="canPhone" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Enter your phone number" required>
+	    	</span>
+	    	<br>
+	    	<span>
+	    		<input id="canId" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Enter your reservation ID" required>
+	    	</span>
+			<br>
+
+	      	<span>
+	      		<button id="cancelbtn" onclick="cancel()" class="w3-button w3-light-grey w3-section" style="font-size:30px" type="submit">CANCEL BOOKING
+	      		</button>
+	      	</span>
+		</div>
+
+		<hr style="border: 2px solid gray">
+
+		<!--Change booking time-->
+		<div class="w3-container w3-padding-64" >
+			<h1 style="font-size:40px">
+				<b>In case you want to change your boooking time.</b>
+			</h1>
+			
+			<br>
+			
+			<span>
+	    		<input id="chPhone" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Enter your phone number" required>
+	    	</span>
+	    	<br>
+	    	<span>
+	    		<input id="canId" class="w3-input w3-padding-16" type="text" style="font-size:30px" placeholder="Enter your reservation ID" required>
+	    	</span>
+	    	<br><br>
+	    	<span>
+	    		<span style="font-size:30px">Enter new time of reservation: </span> &nbsp;
+	    		<input id="changeTime" type="time" style="font-size:30px" required name="time">
+	    	</span>
+			<br>
+			<br>
+	      	<span>
+	      		<button id="changeTimeBtn" onclick="changeTime()" class="w3-button w3-light-grey w3-section" style="font-size:30px" type="submit">CHANGE TIMING
+	      		</button>
+	      	</span>
+		</div>
+
+
+	<!-- End page content -->
+	</div>
+
+	<!-- Footer -->
+	<footer class="w3-center w3-light-grey w3-padding-32" width="100%">
+	  <p></p>
+	</footer>
+
+
+
+
+	<script src="reserveDb.js"></script>
+
+
+
+	</body>
+
+</html>

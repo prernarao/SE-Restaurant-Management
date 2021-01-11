@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chef</title>
+
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.4.0/firebase-database.js"></script>
+    <script src="firebaseinit.js"></script> 
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+    
+    <style type="text/css">
+    	body, html {height: 100%}
+        body,h1,h2,h3,h4,h5,h6 {
+        	font-family: "Amatic SC", sans-serif;
+        	font-size: 40px;
+        }
+
+    	table{
+			border: 2px solid;
+			border-collapse: collapse;
+			width: 100%;
+			font-size: 30px;
+
+		}
+		td, th {
+			border: 2px solid #dddddd;
+			text-align: center;
+			padding: 8px;
+			width: 20%;
+		}
+		.compBtn{	
+			/* class name for all "Completed" buttons */
+
+		}
+		#btnLogout{
+			float: right;
+		}
+		.top{			
+			font-weight: bold;
+		}
+    </style>
+
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="top ">
+    <div class="w3-bar w3-xxlarge w3-red w3-opacity " id="myNavbar">
+        <!-- <a href="#" class="w3-bar-item w3-button">HOME</a> -->
+        <a href=""  id ="btnLogout" class="w3-bar-item w3-button">LOG OUT</a>
+    </div>
+</div>
+
+
+<div>
+	<p><center id="hello"></center></p>
+	<!-- <br> -->
+<table id="heading" style="visibility: hidden;">
+	<tr>
+		<th>Table Number</th>
+		<th>Food</th>
+		<th>Quantity</th>
+		<th>Status</th>
+		<th>Change Status</th>
+	</tr>
+</table>
+
+<table id = "dp"></table>
+
+</div>
+
+
+<script src="getChefView.js"></script>
+
+
+
+</body>
+</html>
